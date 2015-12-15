@@ -20,3 +20,4 @@ activator*
 .idea/*
 
 src/main/resources/local.conf
+project/*
