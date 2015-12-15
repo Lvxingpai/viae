@@ -2,7 +2,7 @@ package com.lvxingpai.viae.finagle
 
 import java.util.UUID
 
-import com.lvxingpai.viae.{ Global, Message}
+import com.lvxingpai.viae.{ Global, Message }
 import com.redis.RedisClientPool
 import com.twitter.util.Future
 

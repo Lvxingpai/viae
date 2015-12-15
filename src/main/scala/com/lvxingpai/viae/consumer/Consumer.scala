@@ -40,7 +40,7 @@ abstract class Consumer(protected val pool: RedisClientPool, private val attache
             case e: PicklingException =>
               logger.error(e, s"Unknown message: $raw")
               self ! "fetch"
-            case e =>
+            case e: Throwable =>
               logger.error(e, "Unknown error")
               self ! "fetch"
           }

@@ -13,8 +13,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
  */
 object Global {
   val (conf, injector) = {
-    val basicInjector = Guice.createInjector(new EtcdStoreModule(Configuration.load()))
-    val conf = basicInjector.getInstance(Key.get(classOf[Configuration], Names.named("etcd")))
+    val basicConf = Configuration.load()
+    val basicInjector = Guice.createInjector(new EtcdStoreModule(basicConf))
+    val conf = basicInjector.getInstance(Key.get(classOf[Configuration], Names.named("etcd"))) ++ basicConf
     val injector = Guice.createInjector(new EtcdStoreModule(conf), new RedisModule(conf))
     (conf, injector)
   }
